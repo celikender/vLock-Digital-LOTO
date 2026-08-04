@@ -1,0 +1,85 @@
+{
+  "custom": {},
+  "params": {
+    "equipmentName": "VFD-101",
+    "vfdPath": "[default]vLock/Default/VFDs/VFD-101"
+  },
+  "propConfig": {
+    "params.equipmentName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.vfdPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 58,
+      "width": 128
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tvfdPath \u003d self.view.params.vfdPath\n\tequipmentName \u003d vfdPath.rstrip(\"/\").rsplit(\"/\", 1)[-1]\n\n\tsystem.perspective.openPopup(\n\t\tid\u003d\"loto_\" + equipmentName,\n\t\tview\u003d\"Popups/VFD_LOTO\",\n\t\tparams\u003d{\n\t\t\t\"equipmentName\": equipmentName,\n\t\t\t\"vfdPath\": vfdPath\n\t\t},\n\t\tmodal\u003dTrue,\n\t\tdraggable\u003dTrue,\n\t\tresizable\u003dTrue\n\t)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "height": 1,
+          "width": 1
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "expression": "if(\r\n    tag({view.params.vfdPath} + \"/LOTO/Active\"),\r\n    \"#D32F2F\",\r\n    \"#1976D2\"\r\n)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.equipmentName}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "image": {
+            "height": 12,
+            "icon": {
+              "path": "material/lock"
+            },
+            "width": 12
+          },
+          "style": {
+            "fontSize": "10px"
+          }
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "percent"
+    },
+    "type": "ia.container.coord"
+  }
+}

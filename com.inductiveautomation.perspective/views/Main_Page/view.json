@@ -1,0 +1,344 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Page_Text"
+        },
+        "position": {
+          "height": 32,
+          "width": 700,
+          "x": 30,
+          "y": 20
+        },
+        "props": {
+          "style": {
+            "fontSize": "24px",
+            "fontWeight": "bold",
+            "textAlign": "center"
+          },
+          "text": "Sortation Center"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "A-101"
+            },
+            "position": {
+              "height": 0.15,
+              "width": 0.7,
+              "x": 0.16,
+              "y": 0.35
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#374151",
+                "border": "2px solid #111827"
+              },
+              "text": "A-101",
+              "textStyle": {
+                "color": "#D5D5D5",
+                "key": "value",
+                "textAlignLast": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PE-101"
+            },
+            "position": {
+              "height": 0.07,
+              "rotate": {
+                "angle": 270
+              },
+              "width": 0.07,
+              "x": 0.25,
+              "y": 0.44
+            },
+            "propConfig": {
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(\r\n  {[default]vLock/Default/Package_X} \u003e\u003d 0.235\r\n  \u0026\u0026\r\n  {[default]vLock/Default/Package_X} \u003c\u003d 0.285,\r\n  \"#000000\",\r\n  \"#22C55E\"\r\n)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "text": "▶"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PE-101R"
+            },
+            "position": {
+              "height": 0.07,
+              "rotate": {
+                "angle": 270
+              },
+              "width": 0.07,
+              "x": 0.25,
+              "y": 0.26
+            },
+            "propConfig": {
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(\r\n  {[default]vLock/Default/Package_X} \u003e\u003d 0.235\r\n  \u0026\u0026\r\n  {[default]vLock/Default/Package_X} \u003c\u003d 0.285,\r\n  \"#000000\",\r\n  \"#22C55E\"\r\n)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "text": "▮"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PE_102"
+            },
+            "position": {
+              "height": 0.07,
+              "rotate": {
+                "angle": 270
+              },
+              "width": 0.07,
+              "x": 0.75,
+              "y": 0.44
+            },
+            "propConfig": {
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(\r\n  {[default]vLock/Default/Package_X} \u003e\u003d 0.735\r\n  \u0026\u0026\r\n  {[default]vLock/Default/Package_X} \u003c\u003d 0.785,\r\n  \"#000000\",\r\n  \"#22C55E\"\r\n)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "text": "▶"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PE-102R"
+            },
+            "position": {
+              "height": 0.07,
+              "rotate": {
+                "angle": 270
+              },
+              "width": 0.07,
+              "x": 0.75,
+              "y": 0.26
+            },
+            "propConfig": {
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(\r\n  {[default]vLock/Default/Package_X} \u003e\u003d 0.735\r\n  \u0026\u0026\r\n  {[default]vLock/Default/Package_X} \u003c\u003d 0.785,\r\n  \"#000000\",\r\n  \"#22C55E\"\r\n)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "text": "▮"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "key": "value"
+            },
+            "meta": {
+              "name": "Package"
+            },
+            "position": {
+              "height": 0.05,
+              "width": 0.05,
+              "y": 0.4
+            },
+            "propConfig": {
+              "position.x": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]vLock/Default/Package_X"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#FFCA8A",
+                "border": "2px solid #78350F",
+                "borderRadius": "3px"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\n    resetRequiredPath \u003d \"[default]vLock/Default/System/ResetRequired\"\n    vfd101RunPath \u003d \"[default]vLock/Default/VFDs/VFD-101/Cmd_Run\"\n    vfd102RunPath \u003d \"[default]vLock/Default/VFDs/VFD-102/Cmd_Run\"\n\n    resetRequired \u003d bool(\n        system.tag.readBlocking([resetRequiredPath])[0].value\n    )\n\n    if resetRequired:\n        system.perspective.print(\"Start blocked. Press Reset first.\")\n        return\n\n    system.tag.writeBlocking(\n        [\n            vfd101RunPath,\n            vfd102RunPath\n        ],\n        [\n            True,\n            True\n        ]\n    )"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Start_Button"
+            },
+            "position": {
+              "height": 0.0815,
+              "width": 0.1141,
+              "x": 0.02,
+              "y": 0.02
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#008000"
+              },
+              "text": "Start"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\n    system.tag.writeBlocking(\n        [\"[default]vLock/Default/VFDs/VFD-101/Cmd_Run\"],\n        [False]\n    )"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Stop_Button"
+            },
+            "position": {
+              "height": 0.0815,
+              "width": 0.1141,
+              "x": 0.14,
+              "y": 0.02
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#AC0000"
+              },
+              "text": "Stop"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\n    paths \u003d [\n        \"[default]vLock/Default/VFDs/VFD-101/LOTO/Active\",\n        \"[default]vLock/Default/VFDs/VFD-102/LOTO/Active\"\n    ]\n\n    values \u003d system.tag.readBlocking(paths)\n\n    vfd101Loto \u003d bool(values[0].value)\n    vfd102Loto \u003d bool(values[1].value)\n\n    if vfd101Loto or vfd102Loto:\n        system.perspective.print(\n            \"Reset blocked: release all active LOTO locks first.\"\n        )\n        return\n\n    system.tag.writeBlocking(\n        [\"[default]vLock/Default/System/ResetRequired\"],\n        [False]\n    )"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Reset_Button"
+            },
+            "position": {
+              "height": 0.0815,
+              "width": 0.1141,
+              "x": 0.26,
+              "y": 0.02
+            },
+            "props": {
+              "text": "Reset"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedView"
+            },
+            "position": {
+              "height": 0.1,
+              "width": 0.1,
+              "x": 0.6,
+              "y": 0.52
+            },
+            "props": {
+              "params": {
+                "equipmentName": "VFD-101",
+                "vfdPath": "[default]vLock/Default/VFDs/VFD-101"
+              },
+              "path": "Components/vLock_LOTO_Button"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedView_0"
+            },
+            "position": {
+              "height": 0.1,
+              "width": 0.1,
+              "x": 0.8887,
+              "y": 0.52
+            },
+            "props": {
+              "params": {
+                "equipmentName": "VFD-102",
+                "vfdPath": "[default]vLock/Default/VFDs/VFD-102"
+              },
+              "path": "Components/vLock_LOTO_Button"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "custom": {
+          "key": "value"
+        },
+        "meta": {
+          "name": "CoordinateContainer"
+        },
+        "position": {
+          "height": 417,
+          "width": 701,
+          "x": 47.5,
+          "y": 132
+        },
+        "props": {
+          "mode": "percent"
+        },
+        "type": "ia.container.coord"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

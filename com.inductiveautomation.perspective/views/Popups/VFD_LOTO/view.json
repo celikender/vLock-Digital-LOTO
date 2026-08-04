@@ -1,0 +1,190 @@
+{
+  "custom": {},
+  "params": {
+    "equipmentName": "VFD-101",
+    "vfdPath": "[default]vLock/Default/VFDs/VFD-101"
+  },
+  "propConfig": {
+    "params.equipmentName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.vfdPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 500,
+      "width": 500
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "TitleLabel"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.equipmentName} + \" — LOCKOUT / TAGOUT\""
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "StatusLabel"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "if(\r\n    tag({view.params.vfdPath} + \"/LOTO/Active\"),\r\n    \"Status: LOTO ACTIVE\",\r\n    \"Status: AVAILABLE\"\r\n)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "ReasonInput"
+        },
+        "position": {
+          "basis": "111px"
+        },
+        "type": "ia.input.text-area"
+      },
+      {
+        "meta": {
+          "name": "IsolationCheck"
+        },
+        "position": {
+          "basis": "36px"
+        },
+        "props": {
+          "text": "Physical isolation verified"
+        },
+        "type": "ia.input.checkbox"
+      },
+      {
+        "meta": {
+          "name": "ZeroEnergyCheck"
+        },
+        "position": {
+          "basis": "36px"
+        },
+        "props": {
+          "text": "Zero-energy state verified"
+        },
+        "type": "ia.input.checkbox"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "    vfdPath \u003d self.view.params.vfdPath\n\n    activePath \u003d vfdPath + \"/LOTO/Active\"\n    ownerPath \u003d vfdPath + \"/LOTO/Owner\"\n    appliedAtPath \u003d vfdPath + \"/LOTO/AppliedAt\"\n    reasonPath \u003d vfdPath + \"/LOTO/Reason\"\n    resetRequiredPath \u003d \"[default]vLock/Default/System/ResetRequired\"\n\n    activeValue \u003d bool(\n        system.tag.readBlocking([activePath])[0].value\n    )\n\n    if activeValue:\n        return\n\n    root \u003d self.getParent().getParent()\n    reason \u003d root.getChild(\"ReasonInput\").props.text\n    username \u003d self.session.props.auth.user.userName\n\n    system.tag.writeBlocking(\n        [\n            activePath,\n            ownerPath,\n            appliedAtPath,\n            reasonPath,\n            resetRequiredPath\n        ],\n        [\n            True,\n            username,\n            system.date.now(),\n            reason,\n            True\n        ]\n    )"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ApplyButton"
+            },
+            "position": {
+              "basis": "250px"
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {},
+                    "tagPath": "[default]vLock/Default/VFDs/VFD-101/LOTO/Active"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "!{value}",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#AC0000"
+              },
+              "text": "APPLY LOTO"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "    vfdPath \u003d self.view.params.vfdPath\n\n    activePath \u003d vfdPath + \"/LOTO/Active\"\n    ownerPath \u003d vfdPath + \"/LOTO/Owner\"\n    reasonPath \u003d vfdPath + \"/LOTO/Reason\"\n\n    values \u003d system.tag.readBlocking([\n        activePath,\n        ownerPath\n    ])\n\n    isActive \u003d bool(values[0].value)\n    owner \u003d str(values[1].value or \"\").strip()\n    currentUser \u003d str(\n        self.session.props.auth.user.userName or \"\"\n    ).strip()\n\n    if not isActive:\n        return\n\n    if owner.lower() !\u003d currentUser.lower():\n        system.perspective.print(\n            \"Release blocked. Owner: \" + owner +\n            \", current user: \" + currentUser\n        )\n        return\n\n    system.tag.writeBlocking(\n        [\n            activePath,\n            ownerPath,\n            reasonPath\n        ],\n        [\n            False,\n            \"\",\n            \"\"\n        ]\n    )"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ReleaseButton"
+            },
+            "position": {
+              "basis": "250px"
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#008000"
+              },
+              "text": "RELEASE LOTO"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "60px"
+        },
+        "props": {
+          "justify": "space-between"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

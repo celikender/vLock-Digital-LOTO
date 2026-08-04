@@ -1,0 +1,11 @@
+{
+  "pages": {
+    "/": {
+      "title": "vLock",
+      "viewPath": "Main_Page"
+    }
+  },
+  "sharedDocks": {
+    "cornerPriority": "top-bottom"
+  }
+}
