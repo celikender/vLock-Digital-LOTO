@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS loto_events (
+    id BIGSERIAL PRIMARY KEY,
+    equipment_name VARCHAR(100) NOT NULL,
+    action VARCHAR(20) NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    reason TEXT,
+    event_time TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
