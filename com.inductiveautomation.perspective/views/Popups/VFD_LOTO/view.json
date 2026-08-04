@@ -16,7 +16,7 @@
   },
   "props": {
     "defaultSize": {
-      "height": 500,
+      "height": 291,
       "width": 500
     }
   },
@@ -70,37 +70,13 @@
         "type": "ia.input.text-area"
       },
       {
-        "meta": {
-          "name": "IsolationCheck"
-        },
-        "position": {
-          "basis": "36px"
-        },
-        "props": {
-          "text": "Physical isolation verified"
-        },
-        "type": "ia.input.checkbox"
-      },
-      {
-        "meta": {
-          "name": "ZeroEnergyCheck"
-        },
-        "position": {
-          "basis": "36px"
-        },
-        "props": {
-          "text": "Zero-energy state verified"
-        },
-        "type": "ia.input.checkbox"
-      },
-      {
         "children": [
           {
             "events": {
               "component": {
                 "onActionPerformed": {
                   "config": {
-                    "script": "    vfdPath \u003d self.view.params.vfdPath\n\n    activePath \u003d vfdPath + \"/LOTO/Active\"\n    ownerPath \u003d vfdPath + \"/LOTO/Owner\"\n    appliedAtPath \u003d vfdPath + \"/LOTO/AppliedAt\"\n    reasonPath \u003d vfdPath + \"/LOTO/Reason\"\n    resetRequiredPath \u003d \"[default]vLock/Default/System/ResetRequired\"\n\n    activeValue \u003d bool(\n        system.tag.readBlocking([activePath])[0].value\n    )\n\n    if activeValue:\n        return\n\n    root \u003d self.getParent().getParent()\n    reason \u003d root.getChild(\"ReasonInput\").props.text\n    username \u003d self.session.props.auth.user.userName\n\n    system.tag.writeBlocking(\n        [\n            activePath,\n            ownerPath,\n            appliedAtPath,\n            reasonPath,\n            resetRequiredPath\n        ],\n        [\n            True,\n            username,\n            system.date.now(),\n            reason,\n            True\n        ]\n    )"
+                    "script": "    vfdPath \u003d self.view.params.vfdPath\n\n    activePath \u003d vfdPath + \"/LOTO/Active\"\n    ownerPath \u003d vfdPath + \"/LOTO/Owner\"\n    appliedAtPath \u003d vfdPath + \"/LOTO/AppliedAt\"\n    reasonPath \u003d vfdPath + \"/LOTO/Reason\"\n\n    resetRequiredPath \u003d \"[default]vLock/Default/System/ResetRequired\"\n    vfd101RunPath \u003d \"[default]vLock/Default/VFDs/VFD-101/Cmd_Run\"\n    vfd102RunPath \u003d \"[default]vLock/Default/VFDs/VFD-102/Cmd_Run\"\n\n    activeValue \u003d bool(\n        system.tag.readBlocking([activePath])[0].value\n    )\n\n    # Prevent applying the same LOTO again.\n    if activeValue:\n        return\n\n    root \u003d self.getParent().getParent()\n\n    reason \u003d str(\n        root.getChild(\"ReasonInput\").props.text or \"\"\n    ).strip()\n\n    username \u003d str(\n        self.session.props.auth.user.userName or \"\"\n    )\n\n    equipmentName \u003d str(\n        self.view.params.equipmentName or \"\"\n    )\n\n    if not reason:\n        system.perspective.print(\n            \"LOTO reason is required.\"\n        )\n        return\n\n    results \u003d system.tag.writeBlocking(\n        [\n            activePath,\n            ownerPath,\n            appliedAtPath,\n            reasonPath,\n            resetRequiredPath,\n            vfd101RunPath,\n            vfd102RunPath\n        ],\n        [\n            True,\n            username,\n            system.date.now(),\n            reason,\n            True,\n            False,\n            False\n        ]\n    )\n\n    if not all(result.isGood() for result in results):\n        system.perspective.print(\n            \"LOTO tag write failed: \" + str(results)\n        )\n        return\n\n    try:\n        system.db.runNamedQuery(\n            \"vLock/InsertLOTOEvent\",\n            {\n                \"equipment_name\": equipmentName,\n                \"action\": \"APPLY\",\n                \"username\": username,\n                \"reason\": reason\n            }\n        )\n\n    except Exception as error:\n        system.perspective.print(\n            \"LOTO applied, but database logging failed: \"\n            + str(error)\n        )"
                   },
                   "scope": "G",
                   "type": "script"
@@ -145,7 +121,7 @@
               "component": {
                 "onActionPerformed": {
                   "config": {
-                    "script": "    vfdPath \u003d self.view.params.vfdPath\n\n    activePath \u003d vfdPath + \"/LOTO/Active\"\n    ownerPath \u003d vfdPath + \"/LOTO/Owner\"\n    reasonPath \u003d vfdPath + \"/LOTO/Reason\"\n\n    values \u003d system.tag.readBlocking([\n        activePath,\n        ownerPath\n    ])\n\n    isActive \u003d bool(values[0].value)\n    owner \u003d str(values[1].value or \"\").strip()\n    currentUser \u003d str(\n        self.session.props.auth.user.userName or \"\"\n    ).strip()\n\n    if not isActive:\n        return\n\n    if owner.lower() !\u003d currentUser.lower():\n        system.perspective.print(\n            \"Release blocked. Owner: \" + owner +\n            \", current user: \" + currentUser\n        )\n        return\n\n    system.tag.writeBlocking(\n        [\n            activePath,\n            ownerPath,\n            reasonPath\n        ],\n        [\n            False,\n            \"\",\n            \"\"\n        ]\n    )"
+                    "script": "    vfdPath \u003d self.view.params.vfdPath\n\n    activePath \u003d vfdPath + \"/LOTO/Active\"\n    ownerPath \u003d vfdPath + \"/LOTO/Owner\"\n    reasonPath \u003d vfdPath + \"/LOTO/Reason\"\n\n    values \u003d system.tag.readBlocking([\n        activePath,\n        reasonPath\n    ])\n\n    isActive \u003d bool(values[0].value)\n    reason \u003d str(values[1].value or \"\")\n\n    if not isActive:\n        return\n\n    username \u003d str(self.session.props.auth.user.userName or \"\")\n    equipmentName \u003d str(self.view.params.equipmentName or \"\")\n\n    # Release the LOTO first.\n    system.tag.writeBlocking(\n        [\n            activePath,\n            ownerPath,\n            reasonPath\n        ],\n        [\n            False,\n            \"\",\n            \"\"\n        ]\n    )\n\n    # Logging failure must not prevent the release.\n    try:\n        system.db.runNamedQuery(\n            \"vLock/InsertLOTOEvent\",\n            {\n                \"equipment_name\": equipmentName,\n                \"action\": \"RELEASE\",\n                \"username\": username,\n                \"reason\": reason\n            }\n        )\n    except Exception as error:\n        system.perspective.print(\n            \"LOTO released, but database logging failed: \" + str(error)\n        )"
                   },
                   "scope": "G",
                   "type": "script"
