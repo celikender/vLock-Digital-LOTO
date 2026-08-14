@@ -42,15 +42,15 @@ Equipment Available
 
 ### System Overview
 
-![vLock Overview](screenshots/01-overview.jpg)
+![vLock Overview](screenshots/1-Overview.jpg)
 
 ### Apply LOTO
 
-![Apply LOTO](screenshots/02-apply-loto.jpg)
+![LOTO Active](screenshots/3-Active%20LOTO.jpg)
 
 ### LOTO Active
 
-![LOTO Active](screenshots/03-loto-active.jpg)
+![LOTO Active](screenshots/3-Active%20LOTO.jpg)
 
 ## Technology
 
