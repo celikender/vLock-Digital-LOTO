@@ -24,13 +24,31 @@
     "children": [
       {
         "events": {
-          "component": {
-            "onActionPerformed": {
+          "dom": {
+            "onClick": {
               "config": {
-                "script": "\tvfdPath \u003d self.view.params.vfdPath\n\tequipmentName \u003d vfdPath.rstrip(\"/\").rsplit(\"/\", 1)[-1]\n\n\tsystem.perspective.openPopup(\n\t\tid\u003d\"loto_\" + equipmentName,\n\t\tview\u003d\"Popups/VFD_LOTO\",\n\t\tparams\u003d{\n\t\t\t\"equipmentName\": equipmentName,\n\t\t\t\"vfdPath\": vfdPath\n\t\t},\n\t\tmodal\u003dTrue,\n\t\tdraggable\u003dTrue,\n\t\tresizable\u003dTrue\n\t)"
+                "draggable": false,
+                "id": "rUo-DeXr",
+                "modal": false,
+                "overlayDismiss": true,
+                "position": {
+                  "height": 300,
+                  "relativeLocation": "bottom-right",
+                  "width": 440
+                },
+                "positionType": "relative",
+                "resizable": false,
+                "showCloseIcon": true,
+                "type": "open",
+                "viewParams": {
+                  "equipmentName": "{view.params.equipmentName}",
+                  "vfdPath": "{view.params.vfdPath}"
+                },
+                "viewPath": "Popups/VFD_LOTO",
+                "viewportBound": true
               },
-              "scope": "G",
-              "type": "script"
+              "scope": "C",
+              "type": "popup"
             }
           }
         },

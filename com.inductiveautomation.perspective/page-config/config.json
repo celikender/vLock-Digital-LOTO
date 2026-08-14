@@ -3,9 +3,6 @@
     "/": {
       "title": "vLock",
       "viewPath": "Main_Page"
-    },
-    "/dashboard": {
-      "viewPath": "Dashboard"
     }
   },
   "sharedDocks": {

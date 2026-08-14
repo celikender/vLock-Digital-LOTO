@@ -18,7 +18,7 @@
     "cacheEnabled": false,
     "database": "vLock_DB",
     "fallbackEnabled": false,
-    "lastModificationSignature": "7a7b8cfe45fa43163feae90ee0cba60cb797357d4ab501e61514b610f2895ca6",
+    "lastModificationSignature": "0cc1dc0dfb4a1fde7a03e80bfa5a5916725749ddb6d606951bbd00197732da0a",
     "permissions": [
       {
         "zone": "",
@@ -26,8 +26,8 @@
       }
     ],
     "lastModification": {
-      "actor": "admin",
-      "timestamp": "2026-08-04T21:16:42Z"
+      "actor": "external",
+      "timestamp": "2026-08-13T14:14:24Z"
     }
   }
 }

@@ -16,8 +16,8 @@
   },
   "props": {
     "defaultSize": {
-      "height": 291,
-      "width": 500
+      "height": 319,
+      "width": 455
     }
   },
   "root": {
@@ -62,10 +62,24 @@
       },
       {
         "meta": {
-          "name": "ReasonInput"
+          "name": "ReasonInput",
+          "tooltip": {
+            "text": "Requried"
+          }
         },
         "position": {
-          "basis": "111px"
+          "basis": "76px"
+        },
+        "props": {
+          "placeholder": "Reason \"Requried\"",
+          "style": {
+            "borderBottomLeftRadius": 6,
+            "borderBottomRightRadius": 6,
+            "borderTopLeftRadius": 6,
+            "borderTopRightRadius": 6,
+            "margin": 3,
+            "padding": 3
+          }
         },
         "type": "ia.input.text-area"
       },
@@ -94,9 +108,8 @@
                 "binding": {
                   "config": {
                     "fallbackDelay": 2.5,
-                    "mode": "indirect",
-                    "references": {},
-                    "tagPath": "[default]vLock/Default/VFDs/VFD-101/LOTO/Active"
+                    "mode": "expression",
+                    "tagPath": "{view.params.vfdPath} + \"/LOTO/Active\""
                   },
                   "transforms": [
                     {
@@ -147,19 +160,54 @@
           "name": "FlexContainer"
         },
         "position": {
-          "basis": "60px"
+          "basis": "54px",
+          "shrink": 0
         },
         "props": {
-          "justify": "space-between"
+          "alignContent": "flex-start",
+          "alignItems": "center"
         },
         "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "userLabel"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\"User: \" + {session.props.auth.user.userName}\r\n+ \" | Host: \" + {session.props.host}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": "12px",
+            "margin": 3,
+            "padding": 3
+          }
+        },
+        "type": "ia.display.label"
       }
     ],
     "meta": {
       "name": "root"
     },
     "props": {
-      "direction": "column"
+      "alignContent": "flex-start",
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#E1E4E433",
+        "margin": 3,
+        "overflow": "hidden",
+        "padding": 3
+      }
     },
     "type": "ia.container.flex"
   }
