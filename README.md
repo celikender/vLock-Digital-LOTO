@@ -85,4 +85,4 @@ Any real-world implementation must be designed and validated according to the ap
 ## Author
 
 **Ender Celik**
-ec.endercelik@gmail.com
+ ec.endercelik@gmail.com
