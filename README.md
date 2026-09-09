@@ -1,9 +1,20 @@
-# vLock — Digital LOTO for Ignition
+# vLock Digital LOTO for Ignition
 
 vLock is a **Digital Lockout/Tagout (LOTO) concept project built with Ignition Perspective**.
 
 It demonstrates how Ignition can track equipment lock status, prevent restart while LOTO is active, capture the user/reason/time, require a reset after release, and log LOTO events to PostgreSQL.
+## Problem
 
+Physical LOTO remains the primary safety control, but equipment status, ownership,
+reason, timing, and return-to-service information may also be tracked through paper
+tags or separate operational processes.
+
+## Approach
+
+vLock adds a digital workflow in Ignition around the physical LOTO process.
+It provides equipment-status visibility, user ownership, event history, restart
+management, and audit traceability while keeping physical LOTO procedures as the
+required safety control.
 ## Features
 
 * Independent LOTO for VFD-101 and VFD-102
