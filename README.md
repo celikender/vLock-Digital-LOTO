@@ -1,4 +1,3 @@
-```markdown
 # vLock - Digital LOTO Automation Demo for Ignition
 
 An Ignition Perspective SCADA/HMI demonstration of digital Lockout/Tagout (LOTO), equipment lock status, restart interlocks, and PostgreSQL event logging.
@@ -68,4 +67,3 @@ Built by **Ender Celik**, a mechanical engineer with experience in manufacturing
 ## License
 
 [MIT License](LICENSE). Copyright (c) 2026 Ender Celik.
-```
