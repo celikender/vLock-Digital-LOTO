@@ -1,0 +1,80 @@
+{
+  "name": "Exchange",
+  "tagType": "Folder",
+  "tags": [
+    {
+      "name": "VLock",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Vfd",
+          "tagType": "UdtType",
+          "tags": [
+            {
+              "dataType": "Boolean",
+              "name": "Faulted",
+              "tagType": "AtomicTag",
+              "value": false,
+              "valueSource": "memory"
+            },
+            {
+              "dataType": "Boolean",
+              "name": "CmdRun",
+              "tagType": "AtomicTag",
+              "value": false,
+              "valueSource": "memory"
+            },
+            {
+              "name": "Loto",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "dataType": "String",
+                  "name": "Owner",
+                  "tagType": "AtomicTag",
+                  "value": "",
+                  "valueSource": "memory"
+                },
+                {
+                  "dataType": "Boolean",
+                  "name": "Active",
+                  "tagType": "AtomicTag",
+                  "value": false,
+                  "valueSource": "memory"
+                },
+                {
+                  "dataType": "DateTime",
+                  "formatString": "yyyy-MM-dd h:mm:ss aa",
+                  "name": "AppliedAt",
+                  "tagType": "AtomicTag",
+                  "valueSource": "memory"
+                },
+                {
+                  "dataType": "String",
+                  "name": "Reason",
+                  "tagType": "AtomicTag",
+                  "value": "",
+                  "valueSource": "memory"
+                }
+              ]
+            },
+            {
+              "dataType": "Boolean",
+              "expression": "{[.]CmdRun}\r\n\u0026\u0026 !{[.]Faulted}\r\n\u0026\u0026 !{[.]Loto/Active}\r\n\u0026\u0026 {[.]CommOk}",
+              "name": "Running",
+              "tagType": "AtomicTag",
+              "valueSource": "expr"
+            },
+            {
+              "dataType": "Boolean",
+              "name": "CommOk",
+              "tagType": "AtomicTag",
+              "value": true,
+              "valueSource": "memory"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,99 +1,34 @@
-# vLock Digital LOTO for Ignition
+﻿# vLock - Digital LOTO for Ignition
 
-vLock is a **Digital Lockout/Tagout (LOTO) concept project built with Ignition Perspective**.
+vLock demonstrates a digital "Do Not Operate" status for equipment. Applying a lock displays the user and reason, blocks Start, and records the event in PostgreSQL. After release, Reset is required before restarting.
 
-It demonstrates how Ignition can track equipment lock status, prevent restart while LOTO is active, capture the user/reason/time, require a reset after release, and log LOTO events to PostgreSQL.
-## Problem
+Version 1.0.0. Requires Ignition 8.3, Perspective, and PostgreSQL. No PLC is required.
 
-Physical LOTO remains the primary safety control, but equipment status, ownership,
-reason, timing, and return-to-service information may also be tracked through paper
-tags or separate operational processes.
+## Installation
 
-## Approach
+1. Run `database-schema.sql` in PostgreSQL.
+2. Create an Ignition database connection named exactly `vlock-db` with read/write access.
+3. Import `vlock-digital-loto.zip` into an Ignition project.
+4. Import `vlock-udts.json` into UDT Definitions and `vlock-tags.json` into Tags, both at the root of `default`.
+5. Map `/vlock` to `Exchange/VLock/MainPage` and save.
+6. Open `/data/perspective/client/<project-name>/vlock` on your Gateway.
 
-vLock adds a digital workflow in Ignition around the physical LOTO process.
-It provides equipment-status visibility, user ownership, event history, restart
-management, and audit traceability while keeping physical LOTO procedures as the
-required safety control.
-## Features
-
-* Independent LOTO for VFD-101 and VFD-102
-* Apply / Release workflow
-* Required LOTO reason
-* Ignition user capture
-* Applied timestamp
-* Equipment start inhibition
-* Reset required after release
-* PostgreSQL event logging
-* Reusable Perspective popup with dynamic equipment paths
-
-## Workflow
-
-```text
-Equipment Running
-      ↓
-Apply LOTO
-      ↓
-Capture User + Reason + Time
-      ↓
-LOTO Active
-      ↓
-Equipment Stopped / Start Blocked
-      ↓
-Release LOTO
-      ↓
-Reset Required
-      ↓
-Reset
-      ↓
-Equipment Available
-```
+Unsigned sessions use `Demo User`.
 
 ## Screenshots
 
-### System Overview
+![Running](Screenshots/1-Running.png)
 
-![vLock Overview](screenshots/1-Overview.jpg)
+![Apply a lock](Screenshots/2-Apply_vlock.png)
 
-### Apply LOTO
+![Lock active](Screenshots/3-Applied.png)
 
-![LOTO Active](screenshots/3-Active%20LOTO.jpg)
+![Release popup](Screenshots/4-Realised.png)
 
-### LOTO Active
+## Scope
 
-![LOTO Active](screenshots/3-Active%20LOTO.jpg)
+This demonstration is not a safety-rated energy-isolation system and does not replace physical lockout/tagout procedures or approved hazardous-energy control methods.
 
-## Technology
+## License
 
-* Ignition 8.3
-* Perspective
-* Python/Jython
-* Ignition Tags
-* Named Queries
-* PostgreSQL
-* Docker
-
-## Database
-
-The `database` folder contains the PostgreSQL/Docker setup used by the demo.
-
-LOTO events record information such as:
-
-* Equipment
-* Action
-* Username
-* Reason
-* Timestamp
-
-## Safety Notice
-
-**vLock is a concept/reference project and is not a safety-rated system.**
-
-It does not replace physical lockout/tagout procedures, energy-isolating devices, safety PLCs, safety relays, or an approved hazardous-energy control program.
-
-Any real-world implementation must be designed and validated according to the applicable safety requirements and site procedures.
-
-## Author
-
-**Ender Celik**
- ec.endercelik@gmail.com
+MIT License. Copyright (c) 2026 Ender Celik.

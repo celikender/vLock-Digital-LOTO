@@ -1,0 +1,557 @@
+{
+  "name": "Exchange",
+  "tagType": "Folder",
+  "tags": [
+    {
+      "name": "VLock",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Default",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "System",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "dataType": "Boolean",
+                  "defaultValue": false,
+                  "name": "ResetRequired",
+                  "tagType": "AtomicTag",
+                  "value": false,
+                  "valueSource": "memory"
+                }
+              ]
+            },
+            {
+              "dataType": "Float4",
+              "defaultValue": 0.135,
+              "name": "PackageX",
+              "tagType": "AtomicTag",
+              "value": 0.135,
+              "valueSource": "memory"
+            },
+            {
+              "name": "Vfds",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "Vfd109",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    },
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                },
+                {
+                  "name": "Vfd102",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    },
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        },
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                },
+                {
+                  "name": "Vfd108",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    },
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                },
+                {
+                  "name": "Vfd101",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    },
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                          
+                        },
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                },
+                {
+                  "name": "Vfd105",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    },
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                },
+                {
+                  "name": "Vfd104",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    },
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                },
+                {
+                  "name": "Vfd106",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                },
+                {
+                  "name": "Vfd107",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    },
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                },
+                {
+                  "name": "Vfd103",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                },
+                {
+                  "name": "Vfd110",
+                  "tagType": "UdtInstance",
+                  "tags": [
+                    {
+                      "name": "Faulted",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "CmdRun",
+                      "tagType": "AtomicTag",
+                      "value": false
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "Loto",
+                      "tagType": "Folder",
+                      "tags": [
+                        {
+                          "name": "Active",
+                          "tagType": "AtomicTag",
+                          "value": false
+                        },
+                        {
+                          "name": "Owner",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        },
+                        {
+                          "name": "AppliedAt",
+                          "tagType": "AtomicTag"
+                        },
+                        {
+                          "name": "Reason",
+                          "tagType": "AtomicTag",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "name": "CommOk",
+                      "tagType": "AtomicTag",
+                      "value": true
+                    }
+                  ],
+                  "typeId": "Exchange/VLock/Vfd"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

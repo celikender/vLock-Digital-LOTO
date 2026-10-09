@@ -1,7 +1,0 @@
-{
-  "title": "Digital Lockout Tagout",
-  "description": "Digital LOTO workflow for safe equipment isolation, authorization, daily procedure records, and motor-fault context. It distinguishes true equipment faults from controlled LOTO states, keeping operational data accurate and linking faults to relevant troubleshooting manuals.",
-  "enabled": true,
-  "inheritable": false,
-  "parent": ""
-}
