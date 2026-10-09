@@ -1,4 +1,4 @@
-﻿# vLock - Digital LOTO for Ignition
+﻿#  vLock - Digital LOTO Automation Demo for Ignition
 
 vLock demonstrates a digital "Do Not Operate" status for equipment. Applying a lock displays the user and reason, blocks Start, and records the event in PostgreSQL. After release, Reset is required before restarting.
 
