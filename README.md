@@ -82,8 +82,6 @@ This demonstration supports an established LOTO process. It is **not a safety-ra
 
 ## Author and other projects
 
-Built by **Ender Celik**, a mechanical engineer with experience in manufacturing, controls, and software development.
-
 - [GitHub profile](https://github.com/celikender)
 - [vMaint](https://vmaint.com) - Maintenance management, work orders, inventory, and OEE.
 - [AI Inventory Monitor](https://github.com/celikender/ai_inventory) - Camera-based inventory monitoring with Python, OpenCV, and AI.
